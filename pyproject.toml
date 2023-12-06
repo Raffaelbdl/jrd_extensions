@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "jrd_extensions"
+requires-python = ">=3.10"
+description = "Extension tools for jax.random"
+authors = [
+    {name = "Raffael Bolla Di Lorenzo", email = "raffaelbdl@gmail.com"}
+]
+dependencies = []
+dynamic = ["version", "readme"]
+
+[project.urls]
+homepage = "https://github.com/Raffaelbdl/jrd_extensions"
+
+[tool.setuptools.dynamic]
+readme = {file = ["README.md"], content-type = "text/markdown"}
+version = {attr = "jrd_extensions.version.__version__"}
+
+[tool.setuptools.packages.find]
+include = ["jrd_extensions*"]
