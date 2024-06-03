@@ -1,7 +1,7 @@
 from typing import Iterator
 import jax
 
-PRNGKey = jax.Array
+PRNGKeyArray = jax.Array
 
 
 class Seeded:
@@ -13,12 +13,12 @@ class Seeded:
         return next(self.key)
 
 
-class PRNGSequence(Iterator[PRNGKey]):
-    def __init__(self, key_or_seed: PRNGKey | int) -> None:
+class PRNGSequence(Iterator[PRNGKeyArray]):
+    def __init__(self, key_or_seed: PRNGKeyArray | int) -> None:
         if isinstance(key_or_seed, int):
             key_or_seed = jax.random.key(key_or_seed)
         self.key = key_or_seed
 
-    def __next__(self) -> PRNGKey:
+    def __next__(self) -> PRNGKeyArray:
         self.key, _k = jax.random.split(self.key)
         return _k
