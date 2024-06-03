@@ -16,7 +16,7 @@ class Seeded:
 class PRNGSequence(Iterator[PRNGKey]):
     def __init__(self, key_or_seed: PRNGKey | int) -> None:
         if isinstance(key_or_seed, int):
-            key_or_seed = jax.random.PRNGKey(key_or_seed)
+            key_or_seed = jax.random.key(key_or_seed)
         self.key = key_or_seed
 
     def __next__(self) -> PRNGKey:
